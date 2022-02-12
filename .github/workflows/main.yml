@@ -21,11 +21,11 @@ jobs:
         with:
           node-version: 16.13.1
       # 安装依赖
-      - name: npm install
+      - name: npm  install
         run: npm install
       # 打包
-      - name: npm build
-        run: npm build
+      - name: npm run build
+        run: npm run build
       # 部署
       - name: FTP Deployer Aliyun
         uses: sand4rt/ftp-deployer@v1.3
