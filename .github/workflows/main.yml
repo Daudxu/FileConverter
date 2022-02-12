@@ -39,8 +39,8 @@ jobs:
           local_folder: './dist' # optional, local path, default is: dist
           cleanup: false # optional, remove existing files inside FTP remote folder
           # include: ['./dist'] # optional, e.g. ['dist']
-          exclude: ['node_modules/**'] # optional, e.g. ['node_modules/**', '.git/**', '*.env']
-          pasive: true # optional
+          # exclude: ['node_modules/**'] # optional, e.g. ['node_modules/**', '.git/**', '*.env']
+          pasive: false # optional
       # - name: FTP Deployer Aliyun
       #   uses: sand4rt/ftp-deployer@v1.3
       #   with:
