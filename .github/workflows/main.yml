@@ -27,14 +27,20 @@ jobs:
       - name: npm run build
         run: npm run build
       # 部署
-      - name: Upload ftp
-        uses: sebastianpopp/ftp-action@releases/v2
+      - name: FTP Deployer
+        uses: sand4rt/ftp-deployer@v1.3
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          localDir: './dist'
-          remoteDir: ${{ secrets.FTP_REMOTE_FOLDER }}
+          sftp: false # optional
+          host: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
+          port: 21 # optional, default is: 21
+          username: ${{ secrets.FTP_USERNAME }} # FTP username
+          password: ${{ secrets.FTP_PASSWORD }} # FTP password
+          remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }} # optional, remote path of your FTP server
+          local_folder: './dist' # optional, local path, default is: dist
+          cleanup: false # optional, remove existing files inside FTP remote folder
+          include: ['dist'] # optional, e.g. ['dist']
+          exclude: ['node_modules/**'] # optional, e.g. ['node_modules/**', '.git/**', '*.env']
+          pasive: true # optional
       # - name: FTP Deployer Aliyun
       #   uses: sand4rt/ftp-deployer@v1.3
       #   with:
