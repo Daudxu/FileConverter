@@ -19,26 +19,40 @@ jobs:
         # 使用action库  actions/setup-node安装node
         uses: actions/setup-node@v1
         with:
-          node-version: 13.2.0
+          node-version: 16.13.1
       # 安装依赖
       - name: npm install
         run: npm install
       # 打包
       - name: npm build
-        run: npm run build:prod
+        run: npm build
+      - name: FTP Deployer Aliyun
+        uses: sand4rt/ftp-deployer@v1.3
+        with:
+        sftp: false # optional
+        host: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
+        port: 22 # optional, default is: 21
+        username: ${{ secrets.FTP_USERNAME }} # FTP username
+        password: ${{ secrets.FTP_PASSWORD }} # FTP password
+        remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }} # optional, remote path of your FTP server
+        local_folder: dist # optional, local path, default is: dist
+        cleanup: false # optional, remove existing files inside FTP remote folder
+        include: [] # optional, e.g. ['dist']
+        exclude: [] # optional, e.g. ['node_modules/**', '.git/**', '*.env']
+        pasive: true # optional
       # 部署到阿里云
-      - name: Deploy to Aliyun
-        uses: easingthemes/ssh-deploy@v2.1.1
-        env:
-          # 私钥
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          # scp参数
-          ARGS: "-avzr --delete"
-          # 源目录，编译后生成的文件目录
-          SOURCE: "./dist"
-          # 服务器ip：换成你的服务器IP
-          REMOTE_HOST: "47.106.141.235"
-          # 用户
-          REMOTE_USER: "root"
-          # 目标地址 你在服务器上部署代码的地方
-          TARGET: "/root/web/vue-drag-demo"
+      # - name: Deploy to Aliyun
+      #   uses: easingthemes/ssh-deploy@v2.1.1
+      #   env:
+      #     # 私钥
+      #     SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      #     # scp参数
+      #     ARGS: '-avzr --delete'
+      #     # 源目录，编译后生成的文件目录
+      #     SOURCE: './dist'
+      #     # 服务器ip：换成你的服务器IP
+      #     REMOTE_HOST: '47.106.141.235'
+      #     # 用户
+      #     REMOTE_USER: 'root'
+      #     # 目标地址 你在服务器上部署代码的地方
+      #     TARGET: '/root/web/vue-drag-demo'
