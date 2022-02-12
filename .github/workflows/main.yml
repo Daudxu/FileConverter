@@ -38,7 +38,7 @@ jobs:
           remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }} # optional, remote path of your FTP server
           local_folder: './dist' # optional, local path, default is: dist
           cleanup: false # optional, remove existing files inside FTP remote folder
-          include: ['dist'] # optional, e.g. ['dist']
+          # include: ['./dist'] # optional, e.g. ['dist']
           exclude: ['node_modules/**'] # optional, e.g. ['node_modules/**', '.git/**', '*.env']
           pasive: true # optional
       # - name: FTP Deployer Aliyun
