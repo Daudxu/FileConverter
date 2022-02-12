@@ -15,7 +15,7 @@ jobs:
         # 使用action库  actions/checkout获取源码
         uses: actions/checkout@master
       # 安装Node13
-      - name: use Node.js 13.2.0
+      - name: use Node.js 16.13.1
         # 使用action库  actions/setup-node安装node
         uses: actions/setup-node@v1
         with:
@@ -26,12 +26,13 @@ jobs:
       # 打包
       - name: npm build
         run: npm build
+      # 部署
       - name: FTP Deployer Aliyun
         uses: sand4rt/ftp-deployer@v1.3
         with:
         sftp: false # optional
         host: ${{ secrets.FTP_HOST }} # e.g. ftp.host.com or sftp.host.com (without ftp:// or ftps://)
-        port: 22 # optional, default is: 21
+        port: 21 # optional, default is: 21
         username: ${{ secrets.FTP_USERNAME }} # FTP username
         password: ${{ secrets.FTP_PASSWORD }} # FTP password
         remote_folder: ${{ secrets.FTP_REMOTE_FOLDER }} # optional, remote path of your FTP server
