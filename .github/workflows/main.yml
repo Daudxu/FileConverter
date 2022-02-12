@@ -33,7 +33,7 @@ jobs:
           host: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          localDir: 'dist'
+          localDir: './dist'
           remoteDir: ${{ secrets.FTP_REMOTE_FOLDER }}
       # - name: FTP Deployer Aliyun
       #   uses: sand4rt/ftp-deployer@v1.3
