@@ -33,7 +33,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: './dist'
+          local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
       # - name: FTP Deployer
       #   uses: sand4rt/ftp-deployer@v1.3
