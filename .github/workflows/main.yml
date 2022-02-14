@@ -43,7 +43,7 @@ jobs:
       - name: npm run build
         run: npm run build
       # 部署
-      - name: Sync files
+      - name: Sync files FTP
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
         with:
           server: ${{ secrets.FTP_HOST }}
@@ -51,7 +51,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
-
         # src_account_type: org
         # dst_account_type: org
       # - name: Deploy to Aliyun
