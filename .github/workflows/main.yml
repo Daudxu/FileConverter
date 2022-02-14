@@ -43,7 +43,9 @@ jobs:
           dst: gitee/coding-365
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
-          static_list: 'FileConverter'
+          white_list: 'FileConverter'
+          force_update: true
+          debug: true
         # src_account_type: org
         # dst_account_type: org
       # - name: Deploy to Aliyun
