@@ -5,8 +5,8 @@ on:
     branches:
       # master分支，你也可以改成其他分支
       - master
-jobs:
-  build:
+jobs: 
+  gitee-mirror:
     # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,6 @@ jobs:
           force_update: true
           debug: true
           account_type: org
-jobs:
   build:
     # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
     runs-on: ubuntu-latest
