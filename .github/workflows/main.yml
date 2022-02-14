@@ -5,12 +5,12 @@ on:
     branches:
       # master分支，你也可以改成其他分支
       - master
-jobs: 
-  gitee-mirror:
-    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+jobs:
+  Sync-Code-To-Gitee-job:
+    # runs-on 指定job任务运行所需要的虚拟机环境
     runs-on: ubuntu-latest
     steps:
-     # 同步代码到 gitee
+      # 同步代码到 gitee
       - name: Black list
         uses: Yikun/hub-mirror-action@master
         with:
@@ -22,8 +22,8 @@ jobs:
           force_update: true
           debug: true
           account_type: org
-  build:
-    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+  build-deploy-job:
+    # runs-on 指定job任务运行所需要的虚拟机环境
     runs-on: ubuntu-latest
     steps:
       # 获取源码
@@ -51,7 +51,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
-     
+
         # src_account_type: org
         # dst_account_type: org
       # - name: Deploy to Aliyun
