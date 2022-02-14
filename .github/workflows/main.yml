@@ -10,6 +10,23 @@ jobs:
     # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
     runs-on: ubuntu-latest
     steps:
+     # 同步代码到 gitee
+      - name: Black list
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/Daudxu
+          dst: gitee/coding-365
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          white_list: 'FileConverter'
+          force_update: true
+          debug: true
+          account_type: org
+jobs:
+  build:
+    # runs-on 指定job任务运行所需要的虚拟机环境(必填字段)
+    runs-on: ubuntu-latest
+    steps:
       # 获取源码
       - name: Checkout
         # 使用action库  actions/checkout获取源码
@@ -35,17 +52,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
-      # 同步代码到 gitee
-      - name: Black list
-        uses: Yikun/hub-mirror-action@master
-        with:
-          src: github/Daudxu
-          dst: gitee/coding-365
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}
-          white_list: 'FileConverter'
-          force_update: true
-          debug: true
+     
         # src_account_type: org
         # dst_account_type: org
       # - name: Deploy to Aliyun
