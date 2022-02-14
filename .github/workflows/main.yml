@@ -35,6 +35,17 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
+# 同步代码到gitee          
+#       - name: Mirror the Github organization repos to Gitee.
+#         uses: Yikun/hub-mirror-action@master
+#         with:
+#           src: github/kunpengcompute
+#           dst: gitee/kunpengcompute
+#           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+#           dst_token: ${{ secrets.GITEE_TOKEN }}
+#           account_type: org
+        # src_account_type: org
+        # dst_account_type: org    
       # - name: Deploy to Aliyun
       #   uses: easingthemes/ssh-deploy@v2.1.1
       #   env:
