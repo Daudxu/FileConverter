@@ -35,7 +35,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
-      # 同步代码到gitee
+      # 同步代码到 gitee
       - name: Black list
         uses: Yikun/hub-mirror-action@master
         with:
