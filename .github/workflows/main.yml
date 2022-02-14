@@ -36,14 +36,14 @@ jobs:
           local-dir: './dist/'
           server-dir: ${{ secrets.FTP_REMOTE_FOLDER }}
       # 同步代码到gitee
-      - name: Mirror the Github organization repos to Gitee.
+      - name: Black list
         uses: Yikun/hub-mirror-action@master
         with:
-          src: github/FileConverter
-          dst: gitee/FileConverter
+          src: github/Daudxu
+          dst: gitee/Dan
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
-          account_type: org
+          static_list: 'FileConverter'
         # src_account_type: org
         # dst_account_type: org
       # - name: Deploy to Aliyun
